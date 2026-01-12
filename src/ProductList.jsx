@@ -274,29 +274,28 @@ function ProductList({ onHomeClick }) {
             </div>
             {!showCart ? (
                 <div className="product-grid">
-                 return (
-             <div className="product-grid">
-                 {plantsArray.map((categoryItem, categoryIndex) => (
-                    <div key={categoryIndex}>
-                       <h2>{categoryItem.category}</h2>
-                    <div className="category-grid">
-                          {categoryItem.plants.map((plant, plantIndex) => (
-                             <div key={plantIndex} className="product-card">
+                 <div className="product-grid">
+                    {plantsArray.map((categoryItem, categoryIndex) => (
+                        <div key={categoryIndex}>
+                           <h2>{categoryItem.category}</h2>
+                         <div className="category-grid">
+                            {categoryItem.plants.map((plant, plantIndex) => (
+                               <div key={plantIndex} className="product-card">
                                 <h3>{plant.name}</h3>
-                                <img
-                                    src={plant.image}
-                                    alt={plant.name}
-                                    className="product-image"
-                                 />
-                                <p>{plant.description}</p>
-                                <p><strong>Cost:</strong> {plant.cost}</p>
-                            </div>
-                                   ))}
-                            </div>
-                      </div>
-                  ))}
-           </div>
-        );
+                                     <img
+                                        src={plant.image}
+                                        alt={plant.name}
+                                        className="product-image"
+                                       />
+                                     <p>{plant.description}</p>
+                                    <p><strong>Cost:</strong> {plant.cost}</p>
+                                 </div>
+                                     ))}
+                                </div>
+                          </div>
+                       ))}
+                 </div>
+              );
 
                 </div>
             ) : (
