@@ -260,7 +260,7 @@ function ProductList({ onHomeClick }) {
     ...plant,
     cost: Number(plant.cost.replace("$", "")),
   };
-
+  console.log("ADDING TO CART:", plantForCart);
   dispatch(addItem(plantForCart));
 
   setAddedToCart((prev) => ({
