@@ -255,14 +255,19 @@ function ProductList({ onHomeClick }) {
         e.preventDefault();
         setShowCart(false);
     };
-   const handleAddToCart = (plant) => {
-    dispatch(addItem(plant));
+  const handleAddToCart = (plant) => {
+  const plantForCart = {
+    ...plant,
+    cost: Number(plant.cost.replace("$", "")),
+  };
 
-    setAddedToCart((prev) => ({
-        ...prev,
-        [plant.name]: true
-    }));
-};  
+  dispatch(addItem(plantForCart));
+
+  setAddedToCart((prev) => ({
+    ...prev,
+    [plant.name]: true
+  }));
+};
     return (
         <div>
             <div className="navbar" style={styleObj}>
