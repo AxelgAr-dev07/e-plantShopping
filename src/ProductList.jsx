@@ -255,17 +255,14 @@ function ProductList({ onHomeClick }) {
         e.preventDefault();
         setShowCart(false);
     };
-  const handleAddToCart = (plant) => {
-  const plantForCart = {
-    ...plant,
-    cost: Number(plant.cost.replace("$", "")),
-  };
-  console.log("ADDING TO CART:", plantForCart);
-  dispatch(addItem(plantForCart));
+ const handleAddToCart = (plant, category) => {
+  dispatch(addItem(plant));
 
-  setAddedToCart((prev) => ({
+  const key = `${category}-${plant.name}`;
+
+  setAddedToCart(prev => ({
     ...prev,
-    [plant.name]: true
+    [key]: true
   }));
 };
     return (
@@ -303,13 +300,15 @@ function ProductList({ onHomeClick }) {
                                           src={plant.image} 
                                            alt={plant.name} 
                                             />
+                                          const key = `${category.category}-${plant.name}`;
+
                                             <button
                                                  className="product-button"
-                                                 onClick={() => handleAddToCart(plant)}
-                                                 disabled={addedToCart[plant.name]}
-                                                  >
-                                                     {addedToCart[plant.name] ? "Added" : "Add to Cart"}
-                                           </button>
+                                                 onClick={() => handleAddToCart(plant, category.category)}
+                                                 disabled={addedToCart[key]}
+                                                                              >
+                                                    {addedToCart[key] ? "Added" : "Add to Cart"}
+                                            </button>
                                         <div className="product-title">{plant.name}</div> 
                                           <div className="product-description">{plant.description}</div> 
                                            <div className="product-cost">{plant.cost}</div> 
